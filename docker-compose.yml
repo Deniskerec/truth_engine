@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: truth_engine_db
+    environment:
+      POSTGRES_USER: truth_user
+      POSTGRES_PASSWORD: truth_password
+      POSTGRES_DB: truth_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - truth_engine_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  truth_engine_data:
